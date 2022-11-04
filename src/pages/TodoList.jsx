@@ -38,7 +38,7 @@ function TodoList() {
   return (
     <div>
 
-      <AddForm />
+      <AddForm actualizarLista={getData}/>
       
 
       <h4>Lista de ToDos</h4>

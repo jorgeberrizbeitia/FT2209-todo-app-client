@@ -1,7 +1,8 @@
+import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
 
-function AddForm() {
+function AddForm(props) {
 
   const [ titleInput, setTitleInput ] = useState("")
   const [ descriptionInput, setDescriptionInput ] = useState("")
@@ -10,6 +11,31 @@ function AddForm() {
   const handleTitleChange = (event) => setTitleInput(event.target.value)
   const handleDescriptionChange = (event) => setDescriptionInput(event.target.value)
   const handleIsUrgentChange = (event) => setIsUrgentInput(event.target.checked)
+
+  const handleSubmit = async (event) => {
+
+    event.preventDefault()
+
+    const newTodo = {
+      title: titleInput,
+      description: descriptionInput,
+      isUrgent: isUrgentInput
+    }
+
+    // nos contactamos con el servidor para que cree el ToDo y nos de respuesta
+    try {
+      
+      //                                                         ! el 2do argumento del axios.post es la data que se pasa en el req.body
+      const response = await axios.post("http://localhost:5005/api/todos", newTodo)
+      // si JS llega a este punto es porque el ToDo se ha creado correctamente
+      // tenemos que indicarle a React, que la lista se ha actualizado
+      // manualmente actualizaremos la lista desde el server
+      props.actualizarLista()
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
 
   return (
     <div>
@@ -25,7 +51,7 @@ function AddForm() {
         <label htmlFor="isUrgent">Es Urgente:</label>
         <input checked={isUrgentInput} type="checkbox" name="isUrgent" onChange={handleIsUrgentChange}/>
         <br />
-        <button>Agregar</button>
+        <button onClick={handleSubmit}>Agregar</button>
       </form>
 
     </div>
