@@ -7,6 +7,7 @@ import TodoDetails from './pages/TodoDetails';
 import Error from './pages/Error';
 import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
+import TodoEdit from './pages/TodoEdit';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={ <Home /> }/>
         <Route path="/todos" element={ <TodoList /> } />
         <Route path="/todos/:todoId/details" element={ <TodoDetails /> }/>
+        <Route path="/todos/:todoId/edit" element={ <TodoEdit />} />
 
         {/* rutas de errores */}
         <Route path="/error" element={ <Error /> }/>

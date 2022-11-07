@@ -8,8 +8,27 @@ const getAllTodosService = () => {
 }
 
 // aqui haremos otras funciones de CRUD
+const createTodoService = (newTodo) => {
+  return service.post("/todos", newTodo)
+}
+
+const getTodoDetailsService = (todoId) => {
+  return service.get(`/todos/${todoId}`)
+}
+
+const deleteTodoService = (todoId) => {
+  return service.delete(`/todos/${todoId}`)
+}
+
+const updateTodoService = (todoId, todoChanges) => {
+  return service.patch(`/todos/${todoId}`, todoChanges)
+}
 
 // export default getAllTodosService
 export {
-  getAllTodosService // exporta este y otros elementos que definamos abajo
+  getAllTodosService, // exporta este y otros elementos que definamos abajo
+  createTodoService,
+  getTodoDetailsService,
+  deleteTodoService,
+  updateTodoService
 }

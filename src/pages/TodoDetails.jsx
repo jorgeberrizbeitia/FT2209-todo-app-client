@@ -2,7 +2,8 @@ import axios from 'axios'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
+import { deleteTodoService, getTodoDetailsService } from '../services/todo.services'
 
 function TodoDetails() {
 
@@ -24,7 +25,8 @@ function TodoDetails() {
 
   const getData = async () => {
     try {
-      const response = await axios.get(`http://localhost:5005/api/todos/${todoId}`) // ????
+      // const response = await axios.get(`http://localhost:5005/api/todos/${todoId}`) // ????
+      const response = await getTodoDetailsService(todoId)
       console.log(response)
       // 3. actualizar el estado con la data
       setDetails(response.data)
@@ -46,7 +48,8 @@ function TodoDetails() {
     try {
 
       // 1. contactar al Backend para borrar un ToDo por su id
-      await axios.delete(`http://localhost:5005/api/todos/${todoId}`)
+      // await axios.delete(`http://localhost:5005/api/todos/${todoId}`)
+      await deleteTodoService(todoId)
       console.log("elemento borrado")
 
       // 2. redireccionar al usuario a "/todos"
@@ -76,6 +79,8 @@ function TodoDetails() {
         <p>Es urgente: {details.isUrgent === true ? "YAAAAS" : "nah"}</p>
 
         <button onClick={handleDelete}>Borrar</button>
+        <Link to={`/todos/${details._id}/edit`}><button>Ir a Editar</button></Link>
+        
 
       </div>
 

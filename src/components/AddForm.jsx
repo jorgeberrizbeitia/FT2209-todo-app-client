@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
+import { createTodoService } from '../services/todo.services'
 
 function AddForm(props) {
 
@@ -26,7 +27,8 @@ function AddForm(props) {
     try {
       
       //                                                         ! el 2do argumento del axios.post es la data que se pasa en el req.body
-      const response = await axios.post("http://localhost:5005/api/todos", newTodo)
+      // const response = await axios.post("http://localhost:5005/api/todos", newTodo)
+      await createTodoService(newTodo)
       // si JS llega a este punto es porque el ToDo se ha creado correctamente
       // tenemos que indicarle a React, que la lista se ha actualizado
       // manualmente actualizaremos la lista desde el server
