@@ -4,6 +4,8 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import AddForm from "../components/AddForm"
 
+import { getAllTodosService } from "../services/todo.services"
+
 function TodoList() {
 
   // 1. crear el estado que almacena la data de la API
@@ -17,7 +19,8 @@ function TodoList() {
 
   const getData = async () => {
     try {
-      const response = await axios.get("http://localhost:5005/api/todos")
+      // const response = await axios.get("http://localhost:5005/api/todos")
+      const response = await getAllTodosService()
       // 3. guardar la informacion en estado
       console.log(response)
       setList(response.data)
