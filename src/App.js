@@ -9,9 +9,17 @@ import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
 import TodoEdit from './pages/TodoEdit';
 
+import { useContext } from "react"
+import { ThemeContext } from "./context/theme.context"
+
 function App() {
+
+  const { cambiarTema, cambiarTemaBtn, toggleTheme } = useContext(ThemeContext)
+
   return (
-    <div className="App">
+    <div className="App" style={ cambiarTema() }>
+
+      <button style={cambiarTemaBtn()} onClick={toggleTheme}>Cambiar Tema</button>
 
       <Navbar />
 

@@ -1,9 +1,12 @@
 import axios from 'axios'
 import React from 'react'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { createTodoService } from '../services/todo.services'
+import { ThemeContext } from "../context/theme.context"
 
 function AddForm(props) {
+
+  const { cambiarTemaBtn } = useContext(ThemeContext)
 
   const [ titleInput, setTitleInput ] = useState("")
   const [ descriptionInput, setDescriptionInput ] = useState("")
@@ -53,7 +56,7 @@ function AddForm(props) {
         <label htmlFor="isUrgent">Es Urgente:</label>
         <input checked={isUrgentInput} type="checkbox" name="isUrgent" onChange={handleIsUrgentChange}/>
         <br />
-        <button onClick={handleSubmit}>Agregar</button>
+        <button onClick={handleSubmit} style={cambiarTemaBtn()}>Agregar</button>
       </form>
 
     </div>
