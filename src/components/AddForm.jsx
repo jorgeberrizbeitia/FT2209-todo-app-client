@@ -11,6 +11,7 @@ function AddForm(props) {
   const [ titleInput, setTitleInput ] = useState("")
   const [ descriptionInput, setDescriptionInput ] = useState("")
   const [ isUrgentInput, setIsUrgentInput ] = useState(false)
+  const [ coordinates, setCoordinates ] = useState([[50, 10]])
 
   const handleTitleChange = (event) => setTitleInput(event.target.value)
   const handleDescriptionChange = (event) => setDescriptionInput(event.target.value)
