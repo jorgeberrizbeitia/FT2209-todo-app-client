@@ -3,14 +3,7 @@
   min-height: 100vh;
 }
 
-a:visited {
-  color: yellow
-}
-
-.visited-dark {
-  color: yellow
-}
-
-.visited-light {
-  color: orange
+.leaflet-container {
+  width: 400px;
+  height: 400px;
 }

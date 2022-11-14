@@ -3,7 +3,9 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useParams, useNavigate, Link } from "react-router-dom"
+import Map from '../components/Map'
 import { deleteTodoService, getTodoDetailsService } from '../services/todo.services'
+
 
 function TodoDetails() {
 
@@ -81,6 +83,7 @@ function TodoDetails() {
         <button onClick={handleDelete}>Borrar</button>
         <Link to={`/todos/${details._id}/edit`}><button>Ir a Editar</button></Link>
         
+        <Map details={details}/>
 
       </div>
 

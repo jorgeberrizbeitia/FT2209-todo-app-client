@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import AddForm from "../components/AddForm"
+import MapAll from "../components/MapAll"
 
 import { getAllTodosService } from "../services/todo.services"
 
@@ -53,6 +54,8 @@ function TodoList() {
           </p>
         )
       })}
+
+      <MapAll list={list}/>
 
     </div>
   )
