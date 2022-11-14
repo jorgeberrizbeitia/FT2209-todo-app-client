@@ -10,6 +10,9 @@ function MapAll(props) {
         />
 
         {props.list.map((eachTodo) => {
+          if (eachTodo.coordinates.length === 0) {
+            return null
+          }
           return (
             <Marker key={eachTodo._id} position={eachTodo.coordinates}/>
           )
